@@ -30,7 +30,7 @@ function App() {
     <div className="App">
       <Navbar setOpenModal={setOpenModal}/>
       <PostsList posts={posts} deletePost={deletePost}/>
-      <Modal openModal={openModal} setOpenModal={setOpenModal}>
+      <Modal openModal={openModal} setOpenModal={setOpenModal} danger>
         <h1 className='text-red-500 text-lg'>Hello User, wellcome from my app</h1>
       </Modal>
     </div>
