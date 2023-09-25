@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDom from "react-dom";
 export default function Modal({children,openModal,setOpenModal,danger}) {
+  let modalCloseColor = 'text-red-500'
+
   return (
     ReactDom.createPortal(
       !!openModal && <div className='fixed inset-0 flex items-center justify-center z-50'>
@@ -9,7 +11,7 @@ export default function Modal({children,openModal,setOpenModal,danger}) {
           borderColor : danger ? 'red' : 'blue'
         }}>
               <p>{children}</p>
-              <button onClick={() => setOpenModal(false)}>Close</button>
+              <button onClick={() => setOpenModal(false)} className={`${modalCloseColor}`}>Close</button>
           </div>
       </div>,
       document.getElementById('modal')
