@@ -20,14 +20,18 @@ function App() {
     }
   ]);
 
+  let deletePost = (id) =>{
+    setPosts((prevState) => prevState.filter((post) => post.id !== id))
+  }
+
   let [openModal,setOpenModal] = useState(false);
 
   return (
     <div className="App">
       <Navbar setOpenModal={setOpenModal}/>
-      <PostsList posts={posts}/>
+      <PostsList posts={posts} deletePost={deletePost}/>
       <Modal openModal={openModal} setOpenModal={setOpenModal}>
-        <h1 className='text-red-500'>Hello Modal</h1>
+        <h1 className='text-red-500 text-lg'>Hello User, wellcome from my app</h1>
       </Modal>
     </div>
   );
