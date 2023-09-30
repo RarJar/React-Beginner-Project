@@ -8,9 +8,12 @@ export default function PostsList({posts,deletePost}) {
         <div>
             {
             !!posts.length && posts.map((post) =>(
-                <div class="bg-gray-200 mx-5 my-3 flex justify-between text-black border-l-8 border-green-500 rounded-md p-3 w-[95%]">
-                    <div class="text-gray-500 font-thin text-md">
+                <div class="bg-gray-200 mx-7 my-3 flex justify-between text-black border-l-8 border-green-500 rounded-md p-3 w-[95%]">
+                    <div class="text-gray-500 font-thin text-md flex flex-col items-start">
                         <span key={post.id}>{post.title}</span>
+                        <div class="flex flex-wrap mt-2">
+                            <span class="bg-violet-500 text-white py-1 px-2 rounded-lg text-sm">{post.category}</span>
+                        </div>
                     </div>
                     <h3 className='text-red-500 text-md cursor-pointer' onClick={() => deletePost(post.id)}>Delete</h3>
                 </div>

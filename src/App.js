@@ -9,15 +9,18 @@ function App() {
   let [posts,setPosts] = useState([
     {
       id : 1,
-      title : 'one'
+      title : 'one',
+      category : 'Free'
     },
     {
       id : 2,
-      title : 'two'
+      title : 'two',
+      category : 'Premium'
     },
     {
       id : 3,
-      title : 'three'
+      title : 'three',
+      category : 'Paid'
     }
   ]);
 
