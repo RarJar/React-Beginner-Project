@@ -3,7 +3,7 @@ import React from 'react'
 export default function PostsList({posts,deletePost}) {
   return (
     <div>
-      <h2 className="text-2xl">Posts List</h2>
+      <h2 className="text-2xl mt-10">Posts List</h2>
         {
         <div>
             {

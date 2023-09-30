@@ -19,10 +19,9 @@ export default function Navbar({setOpenModal}) {
       <div className="hidden md:flex md:items-center md:w-auto w-full" id="menu">
           <nav>
               <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
-                  <li><a className="md:p-4 py-3 px-0 block" href="/">AboutUs</a></li>
-                  <li><a className="md:p-4 py-3 px-0 block" href="/">Treatments</a></li>
-                  <li><a className="md:p-4 py-3 px-0 block" href="/">Blog</a></li>
-                  <li><button className="md:p-4 py-3 px-0 block md:mb-0 mb-2" onClick={() => setOpenModal(true)}>Login</button></li>
+                  <li><a className="md:p-4 py-3 px-0 block" href="/">Home</a></li>
+                  <li><a className="md:p-4 py-3 px-0 block" href="/">Posts</a></li>
+                  <li><button className="md:p-4 py-3 px-0 block" onClick={() => setOpenModal(true)}>Create Post</button></li>
               </ul>
           </nav>
       </div>
