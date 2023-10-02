@@ -1,9 +1,28 @@
 import React from 'react'
 
-export default function PostsList({posts,deletePost}) {
+export default function PostsList({posts,deletePost,setUrl}) {
   return (
     <div>
       <h2 className="text-2xl mt-10">Posts List</h2>
+
+        <div className="flex space-x-4 mx-7">
+            <button className="bg-gradient-to-r from-red-400 to-yellow-500 text-white py-2 px-4 rounded" onClick={() => setUrl("http://localhost:3001/posts")}>
+                All
+            </button>
+
+            <button className="bg-gradient-to-r from-blue-400 to-indigo-500 text-white py-2 px-4 rounded" onClick={() => setUrl("http://localhost:3001/posts?category=Free")}>
+                Free
+            </button>
+
+            <button className="bg-gradient-to-r from-green-400 to-blue-500 text-white py-2 px-4 rounded" onClick={() => setUrl("http://localhost:3001/posts?category=Paid")}>
+                Paid
+            </button>
+
+            <button className="bg-gradient-to-r from-indigo-400 to-blue-500 text-white py-2 px-4 rounded" onClick={() => setUrl("http://localhost:3001/posts?category=Premium")}>
+                Premium
+            </button>
+        </div>
+
         {
         <div>
             {

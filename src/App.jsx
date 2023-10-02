@@ -7,14 +7,15 @@ import {useState,useEffect} from 'react'
 
 function App() {
   let [posts,setPosts] = useState([]);
+  let [url,setUrl] = useState("http://localhost:3001/posts");
 
   useEffect(() => {
-    fetch('http://localhost:3001/posts')
+    fetch(url)
     .then(res=>res.json())
     .then(json=>{
       setPosts(json);
     })
-  }, []);
+  }, [url]);
   
   let [openModal,setOpenModal] = useState(false);
 
@@ -29,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <Navbar setOpenModal={setOpenModal}/>
-      <PostsList posts={posts} deletePost={deletePost}/>
+      <PostsList posts={posts} deletePost={deletePost} setUrl={setUrl}/>
       <Modal openModal={openModal} setOpenModal={setOpenModal} create>
         <PostForm setOpenModal={setOpenModal} addPost={addPost}/>
       </Modal>
