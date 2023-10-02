@@ -3,19 +3,23 @@ import Navbar from "./components/Navbar";
 import PostsList from "./components/PostList";
 import Modal from "./components/Modal";
 import PostForm from "./components/PostForm";
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useCallback} from 'react'
 
 function App() {
   let [posts,setPosts] = useState([]);
   let [url,setUrl] = useState("http://localhost:3001/posts");
 
-  useEffect(() => {
+  let fetchPosts = useCallback(() => {
     fetch(url)
     .then(res=>res.json())
     .then(json=>{
       setPosts(json);
     })
-  }, [url]);
+  },[url]);
+
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
   
   let [openModal,setOpenModal] = useState(false);
 
