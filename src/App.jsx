@@ -3,27 +3,19 @@ import Navbar from "./components/Navbar";
 import PostsList from "./components/PostList";
 import Modal from "./components/Modal";
 import PostForm from "./components/PostForm";
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 
 function App() {
-  let [posts,setPosts] = useState([
-    {
-      id : 1,
-      title : 'one',
-      category : 'Free'
-    },
-    {
-      id : 2,
-      title : 'two',
-      category : 'Premium'
-    },
-    {
-      id : 3,
-      title : 'three',
-      category : 'Paid'
-    }
-  ]);
+  let [posts,setPosts] = useState([]);
 
+  useEffect(() => {
+    fetch('http://localhost:3001/posts')
+    .then(res=>res.json())
+    .then(json=>{
+      setPosts(json);
+    })
+  }, []);
+  
   let [openModal,setOpenModal] = useState(false);
 
   let addPost = (post) =>{
