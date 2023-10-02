@@ -15,12 +15,20 @@ function useDataFetch(url){
     useEffect(() => {
         setLoading(true);
 
-        fetch(url)
+        let abortController = AbortController();
+        let signal = abortController.signal;
+
+        fetch(url ,{signal})
         .then(res=>res.json())
         .then(json=>{
             setData(json);
             setLoading(false);
         })
+
+        // Cleanup Function
+        return () => {
+            abortController.abort();
+        }
     }, [url]);
 
     return {data,deleteData,addData,loading};
