@@ -9,14 +9,14 @@ import {useState} from 'react';
 function App() {
   let [url,setUrl] = useState("http://localhost:3001/posts");
 
-  let {data : posts , deleteData : deletePost ,addData : addPost} = useDataFetch(url);
+  let {data : posts , deleteData : deletePost ,addData : addPost,loading} = useDataFetch(url);
 
   let [openModal,setOpenModal] = useState(false);
 
   return (
     <div className="App">
       <Navbar setOpenModal={setOpenModal}/>
-      <PostsList posts={posts} setUrl={setUrl} deletePost={deletePost}/> 
+      <PostsList posts={posts} setUrl={setUrl} deletePost={deletePost} loading={loading}/> 
       <Modal openModal={openModal} setOpenModal={setOpenModal} create>
         <PostForm setOpenModal={setOpenModal} addPost={addPost}/>
       </Modal>

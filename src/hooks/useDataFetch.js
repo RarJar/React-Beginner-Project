@@ -2,6 +2,7 @@ import { useState,useEffect } from "react";
 
 function useDataFetch(url){
     let [data,setData] = useState(null);
+    let [loading,setLoading] = useState(false);
 
     let addData = (data) =>{
         setData((prevState) => [data,...prevState]);
@@ -12,14 +13,17 @@ function useDataFetch(url){
     }
 
     useEffect(() => {
+        setLoading(true);
+
         fetch(url)
         .then(res=>res.json())
         .then(json=>{
             setData(json);
+            setLoading(false);
         })
     }, [url]);
 
-    return {data,deleteData,addData};
+    return {data,deleteData,addData,loading};
 }
 
 export default useDataFetch;
