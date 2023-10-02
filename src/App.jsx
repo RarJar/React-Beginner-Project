@@ -3,38 +3,20 @@ import Navbar from "./components/Navbar";
 import PostsList from "./components/PostList";
 import Modal from "./components/Modal";
 import PostForm from "./components/PostForm";
-import {useState,useEffect,useCallback} from 'react'
+import useDataFetch from "./hooks/useDataFetch";
+import {useState} from 'react';
 
 function App() {
-  let [posts,setPosts] = useState([]);
   let [url,setUrl] = useState("http://localhost:3001/posts");
 
-  let fetchPosts = useCallback(() => {
-    fetch(url)
-    .then(res=>res.json())
-    .then(json=>{
-      setPosts(json);
-    })
-  },[url]);
+  let {data : posts , deleteData : deletePost ,addData : addPost} = useDataFetch(url);
 
-  useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
-  
   let [openModal,setOpenModal] = useState(false);
-
-  let addPost = (post) =>{
-    setPosts((prevState) => [...prevState,post]);
-  }
-
-  let deletePost = (id) =>{
-    setPosts((prevState) => prevState.filter((post) => post.id !== id))
-  }
 
   return (
     <div className="App">
       <Navbar setOpenModal={setOpenModal}/>
-      <PostsList posts={posts} deletePost={deletePost} setUrl={setUrl}/>
+      <PostsList posts={posts} setUrl={setUrl} deletePost={deletePost}/> 
       <Modal openModal={openModal} setOpenModal={setOpenModal} create>
         <PostForm setOpenModal={setOpenModal} addPost={addPost}/>
       </Modal>
