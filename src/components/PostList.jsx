@@ -47,7 +47,7 @@ export default function PostsList({posts,deletePost,setUrl,loading}) {
         <div>
             {
             !!posts && posts.map((post) =>(
-                <div className="bg-gray-200 mx-7 my-3 flex justify-between text-black border-l-8 border-green-500 rounded-md p-3 w-[95%]" key={post.id}>
+                <div className={`bg-gray-200 mx-7 my-3 flex justify-between text-black border-l-8 rounded-md p-3 w-[95%] ${post.completed ? 'border-green-500' : 'border-red-500'}`} key={post.id}>
                     <div className="text-gray-500 font-thin text-md flex flex-col items-start">
                         <span>{post.title}</span>
                         <div className="flex flex-wrap mt-2">

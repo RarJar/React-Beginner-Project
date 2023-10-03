@@ -1,29 +1,40 @@
 {
-    "posts" : [
-        {
-        "id" : 1,
-        "title" : "one",
-        "category" : "Free"
-        },
-        {
-        "id" : 2,
-        "title" : "two",
-        "category" : "Premium"
-        },
-        {
-        "id" : 3,
-        "title" : "three",
-        "category" : "Paid"
-        },
-        {
-        "id" : 4,
-        "title" : "Four",
-        "category" : "Premium"
-        },
-        {
-        "id" : 5,
-        "title" : "Five",
-        "category" : "Free"
-        }
-    ]
+  "posts": [
+    {
+      "id": 1,
+      "title": "one",
+      "category": "Free",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "two",
+      "category": "Premium",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "title": "three",
+      "category": "Paid",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Four",
+      "category": "Premium",
+      "completed": true
+    },
+    {
+      "id": 5,
+      "title": "Five",
+      "category": "Free",
+      "completed": false
+    },
+    {
+      "id": 105,
+      "title": "LOL",
+      "category": "Premium",
+      "completed": false
+    }
+  ]
 }

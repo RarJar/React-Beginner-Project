@@ -5,7 +5,16 @@ function useDataFetch(url){
     let [loading,setLoading] = useState(false);
 
     let addData = (data) =>{
-        setData((prevState) => [data,...prevState]);
+        // add data to server side
+        fetch('http://localhost:3001/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        // add data to client 
+        setData((prevState) => [...prevState,data]);
     }
 
     let deleteData = (id) =>{
@@ -15,7 +24,9 @@ function useDataFetch(url){
     useEffect(() => {
         setLoading(true);
 
-        let abortController = AbortController();
+        console.log('lol');
+
+        let abortController = new AbortController();
         let signal = abortController.signal;
 
         fetch(url ,{signal})

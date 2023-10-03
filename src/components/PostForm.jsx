@@ -18,10 +18,12 @@ export default function PostForm({setOpenModal,addPost}) {
 
   let handleSubmit = (e) => {
     e.preventDefault();
+    // title : title if (key == value) write only one
     let post = {
       id : Math.floor(Math.random() * 1000),
-      title : title,
-      category : category
+      title,
+      category,
+      completed : false
     }
     addPost(post);
     handleClearForm();
