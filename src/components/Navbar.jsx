@@ -4,7 +4,7 @@ export default function Navbar({setOpenModal}) {
   return (
     <header className="lg:px-16 px-4 bg-white flex flex-wrap items-center py-2 shadow-md">
       <div className="flex-1 flex justify-between items-center">
-          <a href="/" className="text-xl">Logo</a>
+          <a href="/" className="text-xl font-bold">Todo List</a>
       </div>
 
       <label className="pointer-cursor md:hidden block">
