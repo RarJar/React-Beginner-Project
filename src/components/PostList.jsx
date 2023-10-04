@@ -1,7 +1,7 @@
 import React from 'react'
 import PostCard from './PostCard'
 
-export default function PostsList({posts,deletePost,setUrl,loading}) {
+export default function PostsList({posts,deletePost,editOpenModal,setUrl,loading}) {
   return (
     <div>
       <h2 className="text-2xl mt-10">Posts List</h2>
@@ -48,7 +48,7 @@ export default function PostsList({posts,deletePost,setUrl,loading}) {
         <div>
             {
             !!posts && posts.map((post) =>(
-                <PostCard post={post} deletePost={deletePost}/>
+                <PostCard post={post} deletePost={deletePost} editOpenModal={editOpenModal}/>
             ))
             }
             {

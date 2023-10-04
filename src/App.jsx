@@ -8,17 +8,28 @@ import {useState} from 'react';
 
 function App() {
   let [url,setUrl] = useState("http://localhost:3001/posts");
-
-  let {data : posts , deleteData : deletePost ,addData : addPost,loading} = useDataFetch(url);
-
   let [openModal,setOpenModal] = useState(false);
+  let [modalType,setModalType] = useState(null);
+  let [editData,setEditData] = useState([]);
+  let {data : posts,addData : addPost,updateData : updatePost, deleteData : deletePost ,loading} = useDataFetch(url);
+
+  let createOpenModal = () => {
+    setModalType('create')
+    setOpenModal(true);
+  }
+
+  let editOpenModal = (post) =>{
+    setEditData(post);
+    setModalType('edit')
+    setOpenModal(true);
+  }
 
   return (
     <div className="App">
-      <Navbar setOpenModal={setOpenModal}/>
-      <PostsList posts={posts} setUrl={setUrl} deletePost={deletePost} loading={loading}/> 
+      <Navbar createOpenModal={createOpenModal}/>
+      <PostsList posts={posts} setUrl={setUrl} deletePost={deletePost} editOpenModal={editOpenModal} loading={loading}/> 
       <Modal openModal={openModal} setOpenModal={setOpenModal} create>
-        <PostForm setOpenModal={setOpenModal} addPost={addPost}/>
+        <PostForm setOpenModal={setOpenModal} addPost={addPost} updatePost={updatePost} modalType={modalType} editData={editData}/>
       </Modal>
     </div>
   );

@@ -17,15 +17,36 @@ function useDataFetch(url){
         setData((prevState) => [...prevState,data]);
     }
 
+    let updateData = (data) => {
+        // update data to server side
+        fetch(`http://localhost:3001/posts/${data.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        // update data to client 
+        setData((prevState) => {
+            return prevState.map((item) => {
+                if (item.id === data.id) {
+                    return data; 
+                }
+                return data;
+            })
+        });
+    }
+
     let deleteData = (id) =>{
+        fetch(`http://localhost:3001/posts/${id}`, {
+            method: 'DELETE',
+        });
         setData((prevState) => prevState.filter((data) => data.id !== id))
     }
 
     useEffect(() => {
         setLoading(true);
-
-        console.log('lol');
-
+        
         let abortController = new AbortController();
         let signal = abortController.signal;
 
@@ -42,7 +63,7 @@ function useDataFetch(url){
         }
     }, [url]);
 
-    return {data,deleteData,addData,loading};
+    return {data,addData,updateData,deleteData,loading};
 }
 
 export default useDataFetch;

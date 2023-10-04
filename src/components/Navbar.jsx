@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Navbar({setOpenModal}) {
+export default function Navbar({createOpenModal}) {
   return (
     <header className="lg:px-16 px-4 bg-white flex flex-wrap items-center py-2 shadow-md">
       <div className="flex-1 flex justify-between items-center">
@@ -21,7 +21,7 @@ export default function Navbar({setOpenModal}) {
               <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
                   <li><a className="md:p-4 py-3 px-0 block" href="/">Home</a></li>
                   <li><a className="md:p-4 py-3 px-0 block" href="/">Posts</a></li>
-                  <li><button className="md:p-4 py-3 px-0 block" onClick={() => setOpenModal(true)}>Create Post</button></li>
+                  <li><button className="md:p-4 py-3 px-0 block" onClick={createOpenModal}>Create Post</button></li>
               </ul>
           </nav>
       </div>
