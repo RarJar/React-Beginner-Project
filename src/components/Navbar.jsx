@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from "react-router-dom";
 
 export default function Navbar({createOpenModal}) {
   return (
@@ -19,9 +20,9 @@ export default function Navbar({createOpenModal}) {
       <div className="hidden md:flex md:items-center md:w-auto w-full" id="menu">
           <nav>
               <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
-                  <li><a className="md:p-4 py-3 px-0 block" href="/">Home</a></li>
-                  <li><a className="md:p-4 py-3 px-0 block" href="/">Posts</a></li>
-                  <li><button className="md:p-4 py-3 px-0 block" onClick={createOpenModal}>Create Post</button></li>
+                  <li><NavLink className="md:p-4 py-3 px-0 block" to="/">Home</NavLink></li>
+                  <li><NavLink className="md:p-4 py-3 px-0 block" to="/posts">Posts</NavLink></li>
+                  <li><button className="p-2 block bg-blue-500 rounded-sm" onClick={createOpenModal}>Create Post</button></li>
               </ul>
           </nav>
       </div>
